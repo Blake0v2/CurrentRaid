@@ -1,15 +1,17 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     showActiveRaids();
+    // Set an interval to update the raid status every minute
+    setInterval(showActiveRaids, 60000); // 60000ms = 1 minute
 });
 
-// Raid times for each island in terms of minute range
+// Raid times for each island in terms of minute range (no overlap)
 const raid_times = {
-    "dedu_island": { "start": 15, "end": 29 },
-    "snow_island": { "start": 30, "end": 44 },
-    "jungle_island": { "start": 15, "end": 29 },
+    "dedu_island": { "start": 15, "end": 29 },    // Dedu Island from minute 0 to 29
+    "snow_island": { "start": 30, "end": 44 },   // Snow Island from minute 30 to 44
+    "jungle_island": { "start": 0, "end": 29 }, // Jungle Island from minute 15 to 29
 };
 
-// Function to get the current raid based on current minute
+// Function to get the current raid based on the current minute
 function getCurrentRaid() {
     const currentMinute = moment().minute();
     let active_raids = [];
