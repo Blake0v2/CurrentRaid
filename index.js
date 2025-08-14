@@ -2,14 +2,7 @@
 const raid_times = {
     "dedu_island": { "start": 15, "end": 29 },
     "snow_island": { "start": 30, "end": 44 },
-    "jungle_island": { "start": 15, "end": 29 },
-};
-
-// Current raid status (initial state)
-let current_raid = {
-    "snow_island": "Not started",
-    "jungle_island": "Not started", 
-    "dedu_island": "Not started"
+    "jungle_island": { "start": 45, "end": 59 },
 };
 
 // Function to get the current raid based on the current minute
@@ -30,13 +23,15 @@ function getCurrentRaid() {
     }
 
     console.log("Active raids:", active_raids); // Log for debugging
-
     return active_raids;
 }
 
 // Show the active raids by displaying corresponding raid boxes
 function showActiveRaids() {
     const activeRaids = getCurrentRaid();
+
+    // Log active raids to debug
+    console.log("Active Raids:", activeRaids);
 
     // Hide all raid boxes initially
     const raidBoxes = document.querySelectorAll('.raid-box');
