@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 // Raid times for each island in terms of minute range
 const raid_times = {
-    "dedu_island": { "start": 0, "end": 29 },
+    "dedu_island": { "start": 15, "end": 29 },
     "snow_island": { "start": 30, "end": 44 },
     "jungle_island": { "start": 15, "end": 29 },
 };
