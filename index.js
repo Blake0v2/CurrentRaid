@@ -37,29 +37,30 @@ function updateRaidStatus(raidId, status) {
     }
 }
 
-// Call the function when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    updateRaidStatusBasedOnTime();
-    
-    // Refresh the raid status every minute to update the state
-    setInterval(updateRaidStatusBasedOnTime, 60000);
-});
-
-// Function to show Current Raid Status based on time range
+// Function to show or hide the current raid status section
 function showCurrentRaidStatus() {
     const currentTime = new Date();
     const minutes = currentTime.getMinutes(); // Get current minute
 
-    // Check if current minute is between 15 and 29
+    // Show the "Current Raid" section based on time
     if (minutes >= 15 && minutes <= 29) {
+        document.getElementById('current-raid').style.display = 'block';
+    } else if (minutes >= 30 && minutes <= 45) {
         document.getElementById('current-raid').style.display = 'block';
     } else {
         document.getElementById('current-raid').style.display = 'none';
     }
 }
 
-// Call the function every minute to update the page visibility
-setInterval(showCurrentRaidStatus, 60000); // Update every minute
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    // Immediately show raid status on page load
+    showCurrentRaidStatus();
+    updateRaidStatusBasedOnTime(); // Update the status immediately
 
-// Initial check when the page loads
-showCurrentRaidStatus();
+    // Refresh the raid status every minute to update the state
+    setInterval(() => {
+        updateRaidStatusBasedOnTime();
+        showCurrentRaidStatus();
+    }, 60000);
+});
