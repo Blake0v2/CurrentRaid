@@ -37,15 +37,13 @@ function updateRaidStatus(raidId, status) {
     }
 }
 
-// Function to show or hide the current raid status section
+// Function to show Current Raid Status based on time range
 function showCurrentRaidStatus() {
     const currentTime = new Date();
     const minutes = currentTime.getMinutes(); // Get current minute
 
-    // Show the "Current Raid" section based on time
+    // Check if current minute is between 15 and 29
     if (minutes >= 15 && minutes <= 29) {
-        document.getElementById('current-raid').style.display = 'block';
-    } else if (minutes >= 30 && minutes <= 45) {
         document.getElementById('current-raid').style.display = 'block';
     } else {
         document.getElementById('current-raid').style.display = 'none';
@@ -54,13 +52,29 @@ function showCurrentRaidStatus() {
 
 // Call the function when the page loads
 document.addEventListener('DOMContentLoaded', () => {
-    // Immediately show raid status on page load
-    showCurrentRaidStatus();
-    updateRaidStatusBasedOnTime(); // Update the status immediately
+    updateRaidStatusBasedOnTime(); // Update the raid statuses on load
+    showCurrentRaidStatus(); // Show the current raid based on the time
 
     // Refresh the raid status every minute to update the state
-    setInterval(() => {
-        updateRaidStatusBasedOnTime();
-        showCurrentRaidStatus();
-    }, 60000);
+    setInterval(updateRaidStatusBasedOnTime, 60000);
+
+    // Refresh the current raid status visibility every minute
+    setInterval(showCurrentRaidStatus, 60000);
 });
+
+// Function to show a specific page and hide others
+function showPage(pageId) {
+    // Hide all pages
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.style.display = 'none');
+    pages.forEach(page => {
+        page.style.display = 'none';
+    });
+
+    // Show the selected page
+    const selectedPage = document.getElementById(pageId);
+    selectedPage.style.display = 'block';
+    if (selectedPage) {
+        selectedPage.style.display = 'block';
+    }
+}
