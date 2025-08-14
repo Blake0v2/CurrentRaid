@@ -36,7 +36,7 @@ function showActiveRaids() {
     // Hide all raid boxes initially
     const raidBoxes = document.querySelectorAll('.raid-box');
     raidBoxes.forEach(box => {
-        box.style.display = 'none';
+        box.style.display = 'none'; // Ensuring all raid boxes are hidden initially
     });
 
     // Update the raid status object dynamically
@@ -85,4 +85,3 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // Set an interval to update the raid status every minute
     setInterval(showActiveRaids, 60000); // 60000ms = 1 minute
 });
-
