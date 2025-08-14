@@ -25,14 +25,18 @@ function updateRaidStatusBasedOnTime() {
 // Function to update the raid status on the page
 function updateRaidStatus(raidId, status) {
     const raidStatusElement = document.getElementById(`${raidId}-status`);
-    if (raidStatusElement) {
+    const raidBoxElement = document.getElementById(raidId);
+
+    if (raidStatusElement && raidBoxElement) {
         raidStatusElement.textContent = status;
 
         // Change the color based on the status
         if (status === 'Active') {
             raidStatusElement.style.color = 'green';
+            raidBoxElement.style.display = 'block'; // Show the raid box if active
         } else {
             raidStatusElement.style.color = 'red';
+            raidBoxElement.style.display = 'none'; // Hide the raid box if inactive
         }
     }
 }
@@ -42,11 +46,12 @@ function showCurrentRaidStatus() {
     const currentTime = new Date();
     const minutes = currentTime.getMinutes(); // Get current minute
 
-    // Check if current minute is between 15 and 29
+    // Show the "Current Raid" section based on the time range
+    const raidElement = document.getElementById('current-raid');
     if (minutes >= 15 && minutes <= 29) {
-        document.getElementById('current-raid').style.display = 'block';
+        raidElement.style.display = 'block';
     } else {
-        document.getElementById('current-raid').style.display = 'none';
+        raidElement.style.display = 'none';
     }
 }
 
@@ -67,13 +72,9 @@ function showPage(pageId) {
     // Hide all pages
     const pages = document.querySelectorAll('.page');
     pages.forEach(page => page.style.display = 'none');
-    pages.forEach(page => {
-        page.style.display = 'none';
-    });
 
     // Show the selected page
     const selectedPage = document.getElementById(pageId);
-    selectedPage.style.display = 'block';
     if (selectedPage) {
         selectedPage.style.display = 'block';
     }
