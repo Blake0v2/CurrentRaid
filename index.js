@@ -44,7 +44,7 @@ function showActiveRaids() {
         box.style.display = 'none';
     });
 
-    // Update the raid status
+    // Update the raid status object dynamically
     const raid_status_dict = {
         "dedu_island": "Not started",
         "snow_island": "Not started",
@@ -60,7 +60,15 @@ function showActiveRaids() {
         }
     });
 
-    // Update raid status on the page
+    // Update the status on the page dynamically
+    Object.keys(raid_status_dict).forEach(raid => {
+        const raidStatusElem = document.getElementById(`${raid}-status`);
+        if (raidStatusElem) {
+            raidStatusElem.textContent = raid_status_dict[raid];
+        }
+    });
+
+    // Log the updated raid status (for debugging purposes)
     console.log("Updated Raid Status:", raid_status_dict);
     return raid_status_dict;
 }
@@ -82,3 +90,4 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // Set an interval to update the raid status every minute
     setInterval(showActiveRaids, 60000); // 60000ms = 1 minute
 });
+
