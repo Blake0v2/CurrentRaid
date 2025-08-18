@@ -133,6 +133,38 @@ body {
     background: #e4bf67;
 }
 
+.join-btn {
+    width: 100%;
+    padding: 15px;
+    background: #4553be;
+    border: 1px solid #ffffff30;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.join-btn:hover {
+    background: #e4bf67;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 15px;
+    background: #FF0000;
+    border: 1px solid #ffffff30;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.logout-btn:hover {
+    background: #e4bf67;
+}
+
 .content {
     flex: 1;
     padding: 20px;
@@ -146,24 +178,6 @@ body {
 
 .page:first-child {
     display: block;
-}
-
-/* Styling for the Log Out button */
-.logout-btn {
-    display: block;
-    background-color: red;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    font-size: 16px;
-    text-decoration: none;
-    margin-top: auto;
-    border-radius: 5px;
-}
-
-.logout-btn:hover {
-    background-color: #ff4d4d;
-    cursor: pointer;
 }
 
 #current_raid,
