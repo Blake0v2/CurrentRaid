@@ -12,7 +12,7 @@ function updateRaidStatusBasedOnTime() {
     if (minutes >= 15 && minutes <= 29) {
         raidStatuses['dedu-island'] = 'Active';
         raidStatuses['jungle-island'] = 'Active';
-    } else if (minutes >= 30 && minutes <= 45) {
+    } else if (minutes >= 30 && minutes <= 57) {
         raidStatuses['snow-island'] = 'Active';
     }
 
